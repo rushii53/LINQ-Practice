@@ -11,14 +11,16 @@ namespace LINQ_Practice
         public int ProductId { get; set; }  
         public string ProductName { get; set; } 
 
-        public Product(int productId, string productName)
+        public double ProductPrice { get; set; }
+        public Product(int productId, string productName, double productPrice)
         {
             ProductId = productId;
             ProductName = productName;
+            ProductPrice = productPrice;
         }
         public override string ToString()
         {
-            return $"ProductId: {ProductId} PrdouctName: {ProductName}";
+            return $"ProductId: {ProductId} PrdouctName: {ProductName} ProductPrice: {ProductPrice}";
         }
     }
 }
