@@ -46,10 +46,21 @@ namespace LINQ_Practice
             IEnumerable<Person> personDetails = persons.Where(person => person.Age is >= 18 and <= 25);
             foreach(Person person in personDetails) { Console.WriteLine(person.ToString()); }
 
+
+
             var OrderWithProduct = orders.Join(
                     products,
-                    product=>product.ProductId
+                    order=>order.ProductId,
+                    product=>product.ProductId,
+                    (order, product) => new
+                    {
+                        OrderId = order.OrderId,
+                        ProductId = product.ProductId,
+                        ProductName = product.ProductName,
+                        productPrice = product.ProductPrice
+                    }
                 );
+            foreach(var order in OrderWithProduct) { Console.WriteLine(order.ToString());}
         }
     }
 }
